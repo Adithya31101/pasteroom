@@ -7,6 +7,8 @@ import { createServer } from 'http';
 
 //initialisation
 const app = express();
+
+
 const httpServer = createServer(app);
 const PORT = 3120 || process.env.PORT;
 const io: Server = new Server(httpServer);
@@ -37,7 +39,7 @@ io.on('connection', (socket: Socket) => {
    });
 
    socket.on('clip-change', (data, callback) => {
-      socket.broadcast.to(roomCode).emit('admin-clip-change', data);
+      socket.broadcast.to(generateCode.getCodeToEmit(socket.id)).emit('admin-clip-change', data);
       callback({success: true}); 
    });
 

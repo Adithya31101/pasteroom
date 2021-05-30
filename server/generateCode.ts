@@ -37,6 +37,15 @@ class codeHelper {
       }
    }
 
+   getCodeToEmit(adminId: string): string | null {
+      const codeObj = this.codes.find(c => c.adminId === adminId);
+      if(codeObj){
+         return codeObj.code;
+      } else {
+         return null;
+      }
+   }
+
    validateCode(code: string): boolean{
       const codeObj = this.codes.find(c => c.code === code);
       if(codeObj && codeObj.inUse){

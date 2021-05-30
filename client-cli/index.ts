@@ -33,10 +33,12 @@ socket.on('connect_error', (err) => {
 socket.on('admin-clip-change', ({clipData}) => {
    if(program.admin) return;
    if(program.print) {
-      console.log(chalk.bgCyanBright(clipData));
+      console.log(chalk.cyanBright(clipData));
+      console.log("Listening for admin's clipboard changes...");
    } else {
       cp.copy(clipData, () => {
          console.log("Copied to Clipboard!");
+         console.log("Listening for admin's clipboard changes...");
       });
    }
 })
