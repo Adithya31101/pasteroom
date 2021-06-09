@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+   <link rel="manifest" href="./static/site.webmanifest">
+   <link rel="stylesheet" href="/static/styles.css">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <title>Pasteroom</title>
+   <script src="/socket.io/socket.io.js"></script>
+   <script defer src="/static/js/app.js"></script>
+</head>
+<body>
+   <nav>
+      <div class="logo">
+         <img src="/static/logo.png" alt="Logo for Pasteroom">
+         <h1><span>Paste</span>room</h1>
+      </div>
+      <div class="nav_items">
+         <a class="nav-btn" href="/how-it-works">
+            <span class="material-icons">info</span>
+            <span class="nav-text">How it works</span>
+         </a>
+         <button class="nav-btn" id="leave-button">
+            <span class="material-icons">logout</span>
+            <span class="nav-text">Leave Room</span>
+         </button>
+      </div>
+   </nav>
+   <main>
+      <div id="toast">
+         <span id="toast-icon" class="material-icons">check_circle</span>
+         <p id="toast-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, non.</p>
+         <span id="toast-close" class="material-icons">close</span>
+      </div>
+      <div id="room-input">
+         <input id="code-input" maxlength="4" type="text" autocomplete="none" id="code" placeholder="CODE"/>
+         <button id="join-room" type="button">JOIN</button>
+      </div>
+      <div id="clipboard-area">
+
+      </div>
+   </main>
+</body>
+</html>

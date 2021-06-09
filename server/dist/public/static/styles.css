@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+:root {
+   --primary: #867AE9;
+   --secondary: #FFF5AB;
+   --text: #444;
+   font-family: 'Fira Code', monospace;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+nav {
+   position: sticky;
+   top: 0;
+   left: 0;
+   z-index: 3;
+   background-color: #fff;
+   display: flex;
+   justify-content: space-between;
+   padding: 1.5rem 5rem;
+   border-bottom: solid 1px var(--primary);
+}
+
+.logo {
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+}
+
+.logo > img {
+   width: 10%;
+   min-width: 30px;
+}
+
+.logo > h1 {
+   margin-left: 1rem;
+   font-size: 2rem;
+}
+
+.logo > h1 > span {
+   color: var(--primary);
+   font-weight: bold;
+}
+
+.nav_items {
+   min-width: 5rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.nav_items > .nav-btn {
+   text-decoration: none;
+   display: flex;
+   margin-left: 20px; 
+   align-items: center;
+   justify-content: space-evenly;
+   background-color: transparent;
+   border-radius: 15px;
+   color: var(--text);
+   border: solid 1px var(--primary);
+   padding: 5px 15px;
+   transition: background-color 200ms ease-in-out;
+   cursor: pointer;
+}
+
+#leave-button {
+   display: none;
+}
+
+.nav_items > .nav-btn > .nav-text {
+   margin-left: 7.5px;
+   font-size: 1rem;
+   font-family: "Fira Code";
+   letter-spacing: 1px;
+}
+
+.nav_items > .nav-btn:hover, #room-input > button:hover {
+   background-color: #857ae91f;
+}
+
+
+/* Toast */
+#toast {
+   color: #fff;
+   width: 45%;
+   background: #4CB050;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   opacity: 0;
+   top: 0;
+   padding: 0.75rem 3rem 0.75rem 1.2rem;
+   transition: top opacity 1000ms ease-in-out;
+}
+
+#toast > #toast-message {
+   width: 80%;
+}
+
+#toast > #toast-close {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   right: 1.5rem;
+   border-radius: 50%;
+   cursor: pointer;
+   padding: 2.5px;
+}
+#toast > #toast-close:hover {
+   outline: solid 0.5px whitesmoke;
+}
+
+/* Room Input Component */
+#room-input {
+   width: 50%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   margin: 5rem auto;
+}
+
+#room-input > input {
+   font-family: "Fira Code", monospace;
+   width: 4em;
+   max-width: 100%;
+   font-size: 5rem;
+   padding: 1rem;
+   border-radius: 20px;
+   text-align: center;
+   border: solid 1px var(--primary);
+}
+
+#room-input > input::placeholder {
+   opacity: 0.3;
+   font-weight: 100;
+}
+
+#room-input > button {
+   border: solid 1px var(--primary);
+   border-radius: 20px;
+   background: #fff;
+   font-size: 1.5rem;
+   font-family: 'Fira Code', monospace;
+   padding: 1rem 2rem;
+   margin-top: 3rem;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 620px) {
+   .logo > h1 {
+      font-size: 1.2rem;
+   }
+   nav {
+      padding: 1rem 1.5rem;
+   }
+   .nav-text {
+      display: none;
+   }
+   .nav_items > a {
+      border: none;
+   }
+   #toast {
+      width: 90%;
+   }
+   #room-input > input {
+     font-size: 3em;
+   }
+}
