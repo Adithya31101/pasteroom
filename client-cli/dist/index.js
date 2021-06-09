@@ -18,7 +18,7 @@ const commander_1 = __importDefault(require("commander"));
 const socket_io_client_1 = require("socket.io-client");
 const initialiseAdmin_1 = __importDefault(require("./initialiseAdmin"));
 const copy_paste_1 = __importDefault(require("copy-paste"));
-const socket = socket_io_client_1.io('http://localhost:3120/');
+const socket = socket_io_client_1.io('http://pasteroom-env.eba-3n4xnfa3.us-east-1.elasticbeanstalk.com');
 let RoomCode;
 //Config for CLI
 commander_1.default

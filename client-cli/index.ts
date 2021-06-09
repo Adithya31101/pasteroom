@@ -4,7 +4,7 @@ import { Socket, io } from 'socket.io-client';
 import initialiseAdmin from './initialiseAdmin';
 import cp from 'copy-paste';
 
-const socket: Socket = io('http://localhost:3120/');
+const socket: Socket = io('http://pasteroom-env.eba-3n4xnfa3.us-east-1.elasticbeanstalk.com');
 
 let RoomCode: string;
 //Config for CLI
