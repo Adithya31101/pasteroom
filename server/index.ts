@@ -3,6 +3,7 @@
 import generateCode from './generateCode';
 import { Socket, Server } from 'socket.io';
 import express from 'express';
+import { resolve } from 'path';
 import { createServer } from 'http';
 
 //initialisation
@@ -10,12 +11,17 @@ const app = express();
 
 
 const httpServer = createServer(app);
-const PORT = 3120 || process.env.PORT;
+const PORT = process.env.PORT || 3120;
 const io: Server = new Server(httpServer);
 let roomCode: string;
 
+type initData = {
+   admin: boolean;
+   code: string;
+}
+
 io.on('connection', (socket: Socket) => {
-   socket.on('init', (data, callback) => {
+   socket.on('init', (data: initData, callback) => {
       if(data.admin){
          roomCode = generateCode.getUnusedCode(socket.id);
          if(roomCode){
@@ -50,27 +56,22 @@ io.on('connection', (socket: Socket) => {
 });
 
 //Middlewares
+app.use('/static' , express.static(resolve('./public/static')));
 app.use(express.json());
 
-//Routes
-app.post('/', (req, res) => {
-   console.log(req.body);
-   if(req.body.admin){
-      //ADMIN INIT
-      if(req.body.code){
-         //MAKE A ROOM WITH THAT CODE
-      } else {
-         //ASSIGN A CODE TO A ROOM AND SEND THE SAME TO THE ADMIN CLIENT
-      }
-   } else {
-      //CLIENT INIT
-      if(!req.body.code){
-         //THERE IS NO CODE ERROR -> client
-      } 
-      //CONNECT THE CLIENT TO THE SAME {CODE} ROOM
-   }
-   res.status(200).json({message: "Connected to server!"});
+
+app.get('/', (req, res) => {
+   res.sendFile(resolve('./public/index.html'));
 })
+
+//Routes
+app.get('/room/:code', (req, res) => {
+   res.sendFile(resolve('./public/index.html'));
+});
+
+app.get('/how-it-works', (req, res) => {
+   res.sendFile(resolve('./public/how-it-works.html'));
+});
 
 httpServer.listen(PORT, () => {
    console.log(`Listening on PORT ${PORT}`)
