@@ -11,7 +11,7 @@ const app = express();
 
 
 const httpServer = createServer(app);
-const PORT = process.env.PORT || 3120;
+const PORT = process.env.PORT || 8081;
 const io: Server = new Server(httpServer);
 let roomCode: string;
 
@@ -50,27 +50,27 @@ io.on('connection', (socket: Socket) => {
    });
 
    socket.on('disconnect', () => {
-      const wasAdmin = generateCode.freeCode(socket.id);
-      if (wasAdmin) socket.broadcast.to(roomCode).emit('admin-disconnect');
+      const adminRoomCode = generateCode.freeCode(socket.id);
+      if (adminRoomCode) socket.broadcast.to(adminRoomCode).emit('admin-disconnect');
    });
 });
 
 //Middlewares
-app.use('/static' , express.static(resolve('./public/static')));
+app.use('/static' , express.static(resolve('dist/public/static')));
 app.use(express.json());
 
 
 app.get('/', (req, res) => {
-   res.sendFile(resolve('./public/index.html'));
+   res.sendFile(resolve('dist/public/index.html'));
 })
 
 //Routes
 app.get('/room/:code', (req, res) => {
-   res.sendFile(resolve('./public/index.html'));
+   res.sendFile(resolve('dist/public/index.html'));
 });
 
 app.get('/how-it-works', (req, res) => {
-   res.sendFile(resolve('./public/how-it-works.html'));
+   res.sendFile(resolve('dist/public/how-it-works.html'));
 });
 
 httpServer.listen(PORT, () => {

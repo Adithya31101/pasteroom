@@ -1,10 +1,12 @@
+#! /usr/bin/env node
+
 import chalk from 'chalk';
 import program from 'commander';
 import { Socket, io } from 'socket.io-client';
 import initialiseAdmin from './initialiseAdmin';
 import cp from 'copy-paste';
 
-const socket: Socket = io('http://pasteroom-env.eba-3n4xnfa3.us-east-1.elasticbeanstalk.com');
+const socket: Socket = io('https://pasteroom.herokuapp.com');
 
 let RoomCode: string;
 //Config for CLI
@@ -45,8 +47,7 @@ socket.on('admin-clip-change', ({clipData}) => {
 
 socket.on('admin-disconnect', () => {
    console.log("The admin of this room has disconnected! You will be disconnected.")
-   process.exit(0);
-})
+});
 
 socket.on('disconnect', () => {
    console.log("Disconnected");

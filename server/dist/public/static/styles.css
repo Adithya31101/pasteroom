@@ -97,6 +97,7 @@ nav {
    top: 0;
    padding: 0.75rem 3rem 0.75rem 1.2rem;
    transition: top opacity 1000ms ease-in-out;
+   z-index: 5;
 }
 
 #toast > #toast-message {
@@ -113,7 +114,7 @@ nav {
    padding: 2.5px;
 }
 #toast > #toast-close:hover {
-   outline: solid 0.5px whitesmoke;
+   outline: solid 2px whitesmoke;
 }
 
 /* Room Input Component */
@@ -153,6 +154,62 @@ nav {
    margin-top: 3rem;
 }
 
+#clipboard-area {
+   display: none;
+   flex-direction: column;
+   width: 80%;
+   margin: 3rem auto;
+}
+
+#clipboard-area > .placeholder {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.clip-item {
+   color: var(--text);
+   padding: 1rem;
+   padding-bottom: 4rem;
+   position: relative;
+   border-radius: 20px;
+   margin-bottom: 2rem;
+   border: solid 2px var(--primary);
+}
+
+.clip-item > button {
+   border: none;
+   background: none;
+   position: absolute;
+   border-radius: 50%;
+   cursor: pointer;
+}
+
+.clip-item > button:hover {
+   background-color: #857ae91f;   
+}
+
+.clip-item > .copy-button {
+   bottom: 1rem; 
+   right: 3rem;
+}
+
+.clip-item > .close-button {
+   right: 1rem;
+   bottom: 1rem;
+}
+
+.clip-item > .clip-text {
+   color: #000;
+}
+
+
+.clip-item > .clip-timestamp {
+   position: absolute;
+   bottom: 1rem
+}
+
 /* Media Queries */
 @media only screen and (max-width: 620px) {
    .logo > h1 {
@@ -173,4 +230,12 @@ nav {
    #room-input > input {
      font-size: 3em;
    }
+}
+
+
+/* How it works style rules */
+
+.container {
+   width: 90%;
+   margin: 1rem auto;
 }

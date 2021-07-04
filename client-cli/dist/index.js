@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -18,7 +19,7 @@ const commander_1 = __importDefault(require("commander"));
 const socket_io_client_1 = require("socket.io-client");
 const initialiseAdmin_1 = __importDefault(require("./initialiseAdmin"));
 const copy_paste_1 = __importDefault(require("copy-paste"));
-const socket = socket_io_client_1.io('http://pasteroom-env.eba-3n4xnfa3.us-east-1.elasticbeanstalk.com');
+const socket = socket_io_client_1.io('https://pasteroom.herokuapp.com');
 let RoomCode;
 //Config for CLI
 commander_1.default
@@ -57,7 +58,6 @@ socket.on('admin-clip-change', ({ clipData }) => {
 });
 socket.on('admin-disconnect', () => {
     console.log("The admin of this room has disconnected! You will be disconnected.");
-    process.exit(0);
 });
 socket.on('disconnect', () => {
     console.log("Disconnected");

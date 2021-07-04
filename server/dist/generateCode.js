@@ -31,10 +31,10 @@ class codeHelper {
         if (i !== -1) {
             this.codes[i].inUse = false;
             this.codes[i].adminId = null;
-            return true;
+            return this.codes[i].code;
         }
         else {
-            return false;
+            return null;
         }
     }
     getCodeToEmit(adminId) {

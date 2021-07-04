@@ -26,14 +26,14 @@ class codeHelper {
       return this.codes[i].code;
    }
    
-   freeCode(adminId: string): boolean{
+   freeCode(adminId: string): string{
       const i = this.codes.findIndex(code => code.adminId === adminId);
       if(i !== -1){
          this.codes[i].inUse = false;
          this.codes[i].adminId = null;
-         return true;
+         return this.codes[i].code;
       } else {
-         return false;
+         return null;
       }
    }
 

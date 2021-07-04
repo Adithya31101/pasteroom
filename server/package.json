@@ -1,17 +1,16 @@
 {
-  "name": "node-paster",
+  "name": "pasteroom",
   "version": "1.0.0",
-  "description": "This application allows for a copy paste system between an instructor and students",
+  "description": "A client application that allows you to connect to any pasteroom or lets you host a room!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node dist/index.js"
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
     "url": "n"
   },
-  "author": "",
+  "author": "adithya31101",
   "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.17.12",

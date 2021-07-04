@@ -37,12 +37,12 @@
          <p id="toast-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, non.</p>
          <span id="toast-close" class="material-icons">close</span>
       </div>
-      <div id="room-input">
-         <input id="code-input" maxlength="4" type="text" autocomplete="none" id="code" placeholder="CODE"/>
-         <button id="join-room" type="button">JOIN</button>
-      </div>
+      <form id="room-input" >
+         <input id="code-input" autofocus  maxlength="4" type="text" autocomplete="off" id="code" placeholder="CODE"/>
+         <button id="join-room" type="submit">JOIN</button>
+      </form>
       <div id="clipboard-area">
-
+         <img class="placeholder" src="/static/listening.png" alt="listening to admin clip changes">
       </div>
    </main>
 </body>

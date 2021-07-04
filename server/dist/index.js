@@ -13,7 +13,7 @@ const http_1 = require("http");
 //initialisation
 const app = express_1.default();
 const httpServer = http_1.createServer(app);
-const PORT = process.env.PORT || 3120;
+const PORT = process.env.PORT || 8081;
 const io = new socket_io_1.Server(httpServer);
 let roomCode;
 io.on('connection', (socket) => {
@@ -48,23 +48,23 @@ io.on('connection', (socket) => {
         callback({ success: true });
     });
     socket.on('disconnect', () => {
-        const wasAdmin = generateCode_1.default.freeCode(socket.id);
-        if (wasAdmin)
-            socket.broadcast.to(roomCode).emit('admin-disconnect');
+        const adminRoomCode = generateCode_1.default.freeCode(socket.id);
+        if (adminRoomCode)
+            socket.broadcast.to(adminRoomCode).emit('admin-disconnect');
     });
 });
 //Middlewares
-app.use('/static', express_1.default.static(path_1.resolve('./public/static')));
+app.use('/static', express_1.default.static(path_1.resolve('dist/public/static')));
 app.use(express_1.default.json());
 app.get('/', (req, res) => {
-    res.sendFile(path_1.resolve('./public/index.html'));
+    res.sendFile(path_1.resolve('dist/public/index.html'));
 });
 //Routes
 app.get('/room/:code', (req, res) => {
-    res.sendFile(path_1.resolve('./public/index.html'));
+    res.sendFile(path_1.resolve('dist/public/index.html'));
 });
 app.get('/how-it-works', (req, res) => {
-    res.sendFile(path_1.resolve('./public/how-it-works.html'));
+    res.sendFile(path_1.resolve('dist/public/how-it-works.html'));
 });
 httpServer.listen(PORT, () => {
     console.log(`Listening on PORT ${PORT}`);
